@@ -2,11 +2,13 @@
 
 ## What I learned today
 
-- Browser:
-- Client:
-- Server:
-- Request:
-- Response:
-- Frontend:
-- Backend:
-- Full-stack:
+Browser
+Client
+Server
+Request
+Response
+Frontend
+Backend
+Full-stack
+MERN
+Basic Git workflow
