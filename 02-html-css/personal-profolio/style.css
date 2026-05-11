@@ -16,11 +16,14 @@ nav a {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 44px;
 }
 
 h2 {
   color: #1f2937;
+}
+p {
+  line-height: 1.6;
 }
 
 section {
