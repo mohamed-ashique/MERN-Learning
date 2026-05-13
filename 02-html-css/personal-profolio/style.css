@@ -46,6 +46,14 @@ section {
 .secret-note {
   display: none;
 }
+.contact-link {
+  display: inline-block;
+  background-color: #1f2937;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+}
 
 h1 {
   font-size: 44px;
