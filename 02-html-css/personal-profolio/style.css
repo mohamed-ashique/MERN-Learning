@@ -21,9 +21,13 @@ nav {
 }
 
 nav a {
+  display: inline-block;
   color: white;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 5px;
+  padding: 10px 15px;
+  border: 1px solid white;
+  border-radius: 6px;
 }
 
 main {
@@ -38,6 +42,9 @@ section {
   margin-bottom: 25px;
   border: 1px solid #dddddd;
   border-radius: 6px;
+}
+.secret-note {
+  display: none;
 }
 
 h1 {
