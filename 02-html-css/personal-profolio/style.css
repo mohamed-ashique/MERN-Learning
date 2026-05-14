@@ -18,16 +18,33 @@ header {
 
 nav {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 nav a {
-  display: inline-block;
   color: white;
   text-decoration: none;
-  margin: 5px;
   padding: 10px 15px;
   border: 1px solid white;
   border-radius: 6px;
+}
+
+.project-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.project-list article {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
 }
 
 main {
