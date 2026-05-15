@@ -34,17 +34,16 @@ nav a {
 }
 
 .project-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  flex-wrap: wrap;
 }
 
 .project-list article {
-  flex: 1;
-  min-width: 250px;
   padding: 20px;
   border: 1px solid #dddddd;
   border-radius: 8px;
+  background-color: #f9fafb;
 }
 #skills ul {
   display: flex;
