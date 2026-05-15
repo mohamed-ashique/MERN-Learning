@@ -45,6 +45,19 @@ nav a {
   border-radius: 8px;
   background-color: #f9fafb;
 }
+.goals-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding-left: 0;
+}
+
+.goals-list li {
+  list-style: none;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+}
 #skills ul {
   display: flex;
   gap: 10px;
