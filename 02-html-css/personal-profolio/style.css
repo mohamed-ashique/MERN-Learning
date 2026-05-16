@@ -13,7 +13,10 @@ header {
   background-color: #1f2937;
   color: white;
   text-align: center;
-  padding: 40px 20px;
+  padding: 25px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav {
@@ -44,6 +47,20 @@ nav a {
   border: 1px solid #dddddd;
   border-radius: 8px;
   background-color: #f9fafb;
+}
+.project-card {
+  position: relative;
+}
+
+.project-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #1f2937;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 12px;
 }
 .goals-list {
   display: grid;
@@ -150,4 +167,16 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
+}
+
+.fixed-contact {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #1f2937;
+  color: white;
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  z-index: 20;
 }
