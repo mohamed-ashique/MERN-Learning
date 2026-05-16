@@ -180,3 +180,75 @@ footer {
   border-radius: 8px;
   z-index: 20;
 }
+/* Day 14 - Responsive design */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+body {
+  font-size: 16px;
+}
+
+header {
+  padding: 20px 15px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+nav {
+  flex-direction: column;
+}
+
+nav a {
+  width: 100%;
+  max-width: 250px;
+}
+
+main {
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+section {
+  padding: 20px;
+}
+
+table {
+  font-size: 14px;
+}
+
+.fixed-contact {
+  right: 15px;
+  bottom: 15px;
+  padding: 10px 14px;
+}
+
+@media (min-width: 768px) {
+  header {
+    padding: 25px 20px;
+  }
+
+  h1 {
+    font-size: 44px;
+  }
+
+  nav {
+    flex-direction: row;
+  }
+
+  nav a {
+    width: auto;
+    max-width: none;
+  }
+
+  section {
+    padding: 25px;
+  }
+
+  table {
+    font-size: 16px;
+  }
+}
