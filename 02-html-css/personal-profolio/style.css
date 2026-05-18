@@ -87,6 +87,13 @@ nav a {
   background-color: #f4f4f4;
   padding: 8px 12px;
   border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+#skills li:hover {
+  background-color: #1f2937;
+  color: white;
+  transform: translateY(-3px);
 }
 
 main {
