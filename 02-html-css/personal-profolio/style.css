@@ -262,3 +262,66 @@ table {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Day 15 - Hover effects and transitions */
+
+nav a {
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: white;
+  color: #1f2937;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #374151;
+  transform: scale(1.03);
+}
+
+.project-list article {
+  transition: all 0.3s ease;
+}
+
+.project-list article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.contact-link {
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  background-color: #374151;
+  transform: scale(1.03);
+}
+
+.fixed-contact {
+  transition: all 0.3s ease;
+}
+
+.fixed-contact:hover {
+  background-color: #374151;
+  transform: translateY(-3px);
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  animation: fadeInDown 0.8s ease;
+}
