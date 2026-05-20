@@ -1,17 +1,43 @@
+
+
+
+/* =========================
+   Global Variables
+========================= */
+
+:root {
+  --primary-color: #1f2937;
+  --primary-hover-color: #374151;
+  --background-color: #f4f4f4;
+  --card-background: #ffffff;
+  --light-background: #f9fafb;
+  --text-color: #222222;
+  --border-color: #dddddd;
+  --input-border-color: #cccccc;
+  --white-color: #ffffff;
+
+  --small-radius: 6px;
+  --medium-radius: 8px;
+
+  --section-padding: 25px;
+  --transition-speed: 0.3s ease;
+}
+
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #222222;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
 }
 
 header {
-  background-color: #1f2937;
-  color: white;
+    background-color: var(--primary-color);
+  color: var(--white-color);
   text-align: center;
   padding: 25px 20px;
   position: sticky;
@@ -44,9 +70,10 @@ nav a {
 
 .project-list article {
   padding: 20px;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  background-color: #f9fafb;
+  border: 1px solid var(--border-color);
+  border-radius: var(--medium-radius);
+  background-color: var(--light-background);
+  transition: all var(--transition-speed);
 }
 .project-card {
   position: relative;
@@ -103,11 +130,11 @@ main {
 }
 
 section {
-  background-color: white;
-  padding: 25px;
+  background-color: var(--card-background);
+  padding: var(--section-padding);
   margin-bottom: 25px;
-  border: 1px solid #dddddd;
-  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--medium-radius);
 }
 .secret-note {
   display: none;
@@ -157,25 +184,26 @@ select,
 textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 6px;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--small-radius);
 }
 
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #1f2937;
-  color: white;
-  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-radius: var(--small-radius);
+  cursor: pointer;
+  transition: all var(--transition-speed);
 }
 
 footer {
-  background-color: #1f2937;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white-color);
   text-align: center;
   padding: 20px;
 }
-
 .fixed-contact {
   position: fixed;
   right: 20px;
@@ -287,7 +315,7 @@ button {
 }
 
 button:hover {
-  background-color: #374151;
+  background-color: var(--primary-hover-color);
   transform: scale(1.03);
 }
 
