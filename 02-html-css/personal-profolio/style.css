@@ -21,6 +21,7 @@
 
   --section-padding: 25px;
   --transition-speed: 0.3s ease;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -325,7 +326,7 @@ button:hover {
 
 .project-list article:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--card-shadow);
 }
 
 .contact-link {
