@@ -23,6 +23,9 @@
   --transition-speed: 0.3s ease;
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
+html {
+  scroll-behavior: smooth;
+}
 
 
 * {
@@ -34,6 +37,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   margin: 0;
+  line-height: 1.6;
 }
 
 header {
@@ -136,6 +140,7 @@ section {
   margin-bottom: 25px;
   border: 1px solid var(--border-color);
   border-radius: var(--medium-radius);
+   box-shadow: var(--card-shadow)
 }
 .secret-note {
   display: none;
@@ -187,6 +192,13 @@ textarea {
   padding: 10px;
   border: 1px solid var(--input-border-color);
   border-radius: var(--small-radius);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 button {
@@ -255,11 +267,16 @@ section {
 table {
   font-size: 14px;
 }
-
 .fixed-contact {
+  position: fixed;
   right: 15px;
   bottom: 15px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  text-decoration: none;
   padding: 10px 14px;
+  border-radius: var(--medium-radius);
+  z-index: 20;
 }
 
 @media (min-width: 768px) {
@@ -287,6 +304,13 @@ table {
   table {
     font-size: 16px;
   }
+
+   .fixed-contact {
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 16px;
+  }
+  
 }
 
 @media (min-width: 1024px) {
@@ -321,7 +345,12 @@ button:hover {
 }
 
 .project-list article {
-  transition: all 0.3s ease;
+  position: relative;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--medium-radius);
+  background-color: var(--light-background);
+  transition: all var(--transition-speed);
 }
 
 .project-list article:hover {
@@ -360,4 +389,37 @@ button:hover {
 
 h1 {
   animation: fadeInDown 0.8s ease;
+}
+
+a {
+  transition: all var(--transition-speed);
+}
+
+a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: var(--card-background);
+}
+
+caption {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+th,
+td {
+  border: 1px solid var(--border-color);
+  padding: 12px;
+  text-align: left;
 }
