@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Mohamed Ashique - Portfolio</title>
+  </head>
+  <body>
+    <header>
+      <h1>Mohamed Ashique</h1>
+      <p>Future MERN Stack Developer</p>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#goals">Goals</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>About Me</h2>
+
+        <p>
+          Hello, my name is Mohamed Ashique. I am learning full-stack web
+          development step by step. My goal is to become a job-ready MERN Stack
+          developer.
+        </p>
+
+        <p>
+          I am learning HTML, CSS, JavaScript, React, Node.js, Express.js,
+          MongoDB, Git, and GitHub.
+        </p>
+        <p class="secret-note">This note is hidden using display none.</p>
+      </section>
+
+      <section id="skills">
+        <h2>My Skills</h2>
+
+        <ul>
+          <li>HTML</li>
+          <li>Git</li>
+          <li>GitHub</li>
+          <li>Learning CSS</li>
+          <li>Learning JavaScript</li>
+        </ul>
+        <div class="table-wrapper">
+          <table>
+            <caption>
+              My current learning progress
+            </caption>
+
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Level</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>HTML</td>
+                <td>Beginner</td>
+                <td>Learning</td>
+              </tr>
+
+              <tr>
+                <td>HTML Forms</td>
+                <td>Beginner</td>
+                <td>Practicing</td>
+              </tr>
+
+              <tr>
+                <td>Git</td>
+                <td>Beginner</td>
+                <td>Practicing</td>
+              </tr>
+
+              <tr>
+                <td>GitHub</td>
+                <td>Beginner</td>
+                <td>Practicing</td>
+              </tr>
+
+              <tr>
+                <td>CSS</td>
+                <td>Not started</td>
+                <td>Coming soon</td>
+              </tr>
+
+              <tr>
+                <td>JavaScript</td>
+                <td>Not started</td>
+                <td>Coming soon</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="learning-steps">
+        <h2>My Learning Steps</h2>
+
+        <ol>
+          <li>Learn HTML</li>
+          <li>Learn CSS</li>
+          <li>Learn JavaScript</li>
+          <li>Learn React</li>
+          <li>Learn Node.js and Express.js</li>
+          <li>Learn MongoDB</li>
+          <li>Build MERN Stack projects</li>
+        </ol>
+      </section>
+
+      <section id="projects">
+        <h2>My Projects</h2>
+
+        <div class="project-list">
+          <article class="project-card">
+            <span class="project-badge">HTML</span>
+
+            <h3>Personal Portfolio Website</h3>
+
+            <p>
+              This is my first portfolio project. I am building it with HTML
+              first. Later I will improve it with CSS and JavaScript.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <span class="project-badge">Notes</span>
+            <h3>HTML Learning Notes</h3>
+            <p>
+              This project contains my HTML learning notes. I use Git and GitHub
+              to track my progress.
+            </p>
+          </article>
+          <article class="project-card">
+            <span class="project-badge">Forms</span>
+
+            <h3>Contact Form</h3>
+
+            <p>
+              I added a contact form using HTML forms, labels, inputs, textarea,
+              select, and a submit button.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <span class="project-badge">Skills</span>
+            <h3>Skills Table</h3>
+            <p>
+              I created a skills table using table, caption, thead, tbody, tr,
+              th, and td.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="goals">
+        <h2>My Goals</h2>
+
+        <ul class="goals-list">
+          <li>Become a MERN Stack developer</li>
+          <li>Build real-world projects</li>
+          <li>Deploy my projects online</li>
+          <li>Get a web developer job</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+
+        <p>
+          GitHub:
+          <a href="https://github.com/mohamed-ashique" target="_blank">
+            Visit my GitHub profile
+          </a>
+        </p>
+        <p>
+          <a class="contact-link" href="mailto:realashiquepk@gmail.com">
+            Email Me
+          </a>
+        </p>
+
+        <form>
+          <div>
+            <label for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="email">Your Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <div>
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a subject</option>
+              <option value="project">Project</option>
+              <option value="job">Job Opportunity</option>
+              <option value="feedback">Feedback</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Write your message"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Mohamed Ashique. All rights reserved.</p>
+    </footer>
+    <a class="fixed-contact" href="#contact">Contact</a>
+  </body>
+</html>
