@@ -84,11 +84,12 @@ nav div {
 nav a {
   color: var(--secondary-color);
   font-weight: bold;
-  transition: color var(--transition-speed);
+  transition: all var(--transition-speed);
 }
 
 nav a:hover {
   color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 /* =========================
@@ -104,7 +105,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
+  text-align: center;
 }
 
 #hero h2 {
