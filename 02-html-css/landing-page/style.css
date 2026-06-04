@@ -232,6 +232,12 @@ main section > p {
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   color: var(--text-color);
+  transition: all var(--transition-speed);
+}
+
+#modules li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.1);
 }
 
 /* =========================
