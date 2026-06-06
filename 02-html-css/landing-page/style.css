@@ -337,6 +337,12 @@ button:hover {
   background-color: var(--primary-dark);
 }
 
+button:active,
+#hero a:active,
+#cta a:active {
+  transform: scale(0.98);
+}
+
 /* =========================
    Footer
 ========================= */
@@ -348,7 +354,53 @@ footer {
   padding: 25px 20px;
 }
 
+footer a {
+  color: var(--white-color);
+  font-weight: bold;
+}
 
+footer a:hover {
+  color: #dbeafe;
+}
+/* =========================
+   Animations
+========================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#hero h2,
+#hero p,
+#hero a {
+  animation: fadeInUp 0.8s ease;
+}
+
+.feature-grid article,
+#modules li,
+#contact form {
+  animation: fadeInUp 0.8s ease;
+}
+
+/* =========================
+   Accessibility
+========================= */
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
 /* =========================
    Responsive Design
 ========================= */
@@ -377,5 +429,13 @@ footer {
 
   #contact form {
     padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
   }
 }
