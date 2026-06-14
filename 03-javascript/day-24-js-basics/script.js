@@ -37,3 +37,25 @@ console.log(futureJob);
 // null
 let selectedProject = null;
 console.log(selectedProject);
+
+const myName = "Mohamed Ashique";
+const myGoal = "Become a MERN Stack Developer";
+const myCity = "Dubai";
+let studyDay = 24;
+const isPracticingGit = true;
+let currentProject = "JavaScript Basics";
+let futureCompany = null;
+
+console.log(myName);
+console.log(myGoal);
+console.log(myCity);
+console.log(studyDay);
+console.log(isPracticingGit);
+console.log(currentProject);
+console.log(futureCompany);
+
+studyDay = 25;
+currentProject = "JavaScript Practice";
+
+console.log(studyDay);
+console.log(currentProject);
