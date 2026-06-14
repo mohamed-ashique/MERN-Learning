@@ -72,3 +72,17 @@ console.log(10 <= 8);
 // == vs ===
 console.log(10 == "10");
 console.log(10 === "10");
+
+
+const monthlyRentAmount = 12000;
+const numberOfMonths = 6;
+const securityDeposit = 5000;
+const agencyFee = 3000;
+
+const rentTotal = monthlyRentAmount * numberOfMonths;
+const moveInTotal = rentTotal + securityDeposit + agencyFee;
+
+console.log("Rent total:", rentTotal);
+console.log("Security deposit:", securityDeposit);
+console.log("Agency fee:", agencyFee);
+console.log("Move-in total:", moveInTotal);
