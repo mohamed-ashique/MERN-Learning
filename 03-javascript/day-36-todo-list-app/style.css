@@ -65,6 +65,12 @@ button:hover {
   background-color: #1e40af;
 }
 
+.helper-text {
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
 .task-status {
   margin-top: 20px;
   font-weight: bold;
