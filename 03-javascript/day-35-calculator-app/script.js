@@ -8,11 +8,13 @@ const subtractBtn = document.getElementById("subtract-btn");
 const multiplyBtn = document.getElementById("multiply-btn");
 const divideBtn = document.getElementById("divide-btn");
 const clearBtn = document.getElementById("clear-btn");
+const percentageBtn = document.getElementById("percentage-btn");
 
 const resultMessage = document.getElementById("result-message");
 
 
 function getInputNumbers() {
+    
   const firstValue = firstNumberInput.value.trim();
   const secondValue = secondNumberInput.value.trim();
 
@@ -96,6 +98,19 @@ divideBtn.addEventListener("click", function () {
   }
 
   const result = numbers.firstNumber / numbers.secondNumber;
+
+  showResult(`Result: ${result}`);
+});
+
+percentageBtn.addEventListener("click", function () {
+  const numbers = getInputNumbers();
+
+  if (numbers === null) {
+    showError("Please enter both numbers.");
+    return;
+  }
+
+  const result = numbers.firstNumber * numbers.secondNumber / 100;
 
   showResult(`Result: ${result}`);
 });
