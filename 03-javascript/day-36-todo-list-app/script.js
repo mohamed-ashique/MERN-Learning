@@ -58,6 +58,7 @@ function addTask() {
   renderTasks();
 
   taskInput.value = "";
+  
 
   
 }
