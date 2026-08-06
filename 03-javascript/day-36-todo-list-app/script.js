@@ -1,4 +1,4 @@
-console.log("Day 37 - Add Tasks to Todo List");
+console.log("Day 38 - Delete Tasks and Clear All Tasks");
 
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task-btn");
@@ -6,7 +6,7 @@ const taskStatus = document.getElementById("task-status");
 const taskList = document.getElementById("task-list");
 const clearAllBtn = document.getElementById("clear-all-btn");
 
-const tasks = [];
+let tasks = [];
 
 function showStatus(message, type) {
   taskStatus.textContent = message;
@@ -26,17 +26,20 @@ function renderTasks() {
   for (const task of tasks) {
     taskList.innerHTML += `
       <li class="task-item">
-        ${task.text}
+        <span class="task-text">${task.text}</span>
+
+        <button class="delete-btn" data-id="${task.id}">
+          Delete
+        </button>
       </li>
     `;
   }
 
   if (tasks.length === 0) {
-  showStatus("Add your first task.", "");
-} else {
-  showStatus(`You have ${tasks.length} task(s).`, "success");
-}
-
+    showStatus("Add your first task.", "");
+  } else {
+    showStatus(`You have ${tasks.length} task(s).`, "success");
+  }
 }
 
 function addTask() {
@@ -58,9 +61,30 @@ function addTask() {
   renderTasks();
 
   taskInput.value = "";
-  
+  taskInput.focus();
+}
 
-  
+function deleteTask(taskId) {
+  tasks = tasks.filter(function (task) {
+    return task.id !== taskId;
+  });
+
+  renderTasks();
+
+  showStatus("Task deleted successfully.", "success");
+}
+
+function clearAllTasks() {
+  if (tasks.length === 0) {
+    showStatus("There are no tasks to clear.", "error");
+    return;
+  }
+
+  tasks = [];
+
+  renderTasks();
+
+  showStatus("All tasks cleared.", "success");
 }
 
 addTaskBtn.addEventListener("click", function () {
@@ -71,4 +95,16 @@ taskInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     addTask();
   }
+});
+
+taskList.addEventListener("click", function (event) {
+  if (event.target.classList.contains("delete-btn")) {
+    const taskId = Number(event.target.dataset.id);
+
+    deleteTask(taskId);
+  }
+});
+
+clearAllBtn.addEventListener("click", function () {
+  clearAllTasks();
 });
