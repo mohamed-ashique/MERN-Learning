@@ -80,6 +80,13 @@ function clearAllTasks() {
     return;
   }
 
+  const isConfirmed = confirm("Are you sure you want to clear all tasks?");
+
+  if (!isConfirmed) {
+    showStatus("Clear all cancelled.", "error");
+    return;
+  }
+
   tasks = [];
 
   renderTasks();
