@@ -24,22 +24,43 @@ function renderTasks() {
   taskList.innerHTML = "";
 
   for (const task of tasks) {
+    const completedClass = task.isCompleted ? "completed" : "";
+    const completeButtonText = task.isCompleted ? "Undo" : "Complete";
+    const completeButtonClass = task.isCompleted ? "undo-btn" : "complete-btn";
+
     taskList.innerHTML += `
       <li class="task-item">
-        <span class="task-text">${task.text}</span>
+        <span class="task-text ${completedClass}">
+          ${task.text}
+        </span>
 
-        <button class="delete-btn" data-id="${task.id}">
-          Delete
-        </button>
+        <div class="task-actions">
+          <button class="${completeButtonClass}" data-id="${task.id}">
+            ${completeButtonText}
+          </button>
+
+          <button class="delete-btn" data-id="${task.id}">
+            Delete
+          </button>
+        </div>
       </li>
     `;
   }
 
-  if (tasks.length === 0) {
-    showStatus("Add your first task.", "");
-  } else {
-    showStatus(`You have ${tasks.length} task(s).`, "success");
-  }
+ if (tasks.length === 0) {
+  showStatus("Add your first task.", "");
+} else {
+  const completedTasks = tasks.filter(function (task) {
+    return task.isCompleted === true;
+  });
+
+  const pendingTasks = tasks.length - completedTasks.length;
+
+  showStatus(
+    `Total: ${tasks.length} | Completed: ${completedTasks.length} | Pending: ${pendingTasks}`,
+    "success"
+  );
+}
 }
 
 function addTask() {
@@ -72,6 +93,22 @@ function deleteTask(taskId) {
   renderTasks();
 
   showStatus("Task deleted successfully.", "success");
+}
+
+function toggleTaskComplete(taskId) {
+  tasks = tasks.map(function (task) {
+    if (task.id === taskId) {
+      return {
+        id: task.id,
+        text: task.text,
+        isCompleted: !task.isCompleted
+      };
+    }
+
+    return task;
+  });
+
+  renderTasks();
 }
 
 function clearAllTasks() {
@@ -109,6 +146,15 @@ taskList.addEventListener("click", function (event) {
     const taskId = Number(event.target.dataset.id);
 
     deleteTask(taskId);
+  }
+
+  if (
+    event.target.classList.contains("complete-btn") ||
+    event.target.classList.contains("undo-btn")
+  ) {
+    const taskId = Number(event.target.dataset.id);
+
+    toggleTaskComplete(taskId);
   }
 });
 

@@ -139,3 +139,35 @@ button:hover {
 .delete-btn:hover {
   background-color: #b91c1c;
 }
+
+
+.completed {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+.complete-btn {
+  background-color: #16a34a;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.complete-btn:hover {
+  background-color: #15803d;
+}
+
+.undo-btn {
+  background-color: #f59e0b;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.undo-btn:hover {
+  background-color: #d97706;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
