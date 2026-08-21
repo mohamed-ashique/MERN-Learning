@@ -5,6 +5,7 @@ const addTaskBtn = document.getElementById("add-task-btn");
 const taskStatus = document.getElementById("task-status");
 const taskList = document.getElementById("task-list");
 const clearAllBtn = document.getElementById("clear-all-btn");
+const clearCompletedBtn = document.getElementById("clear-completed-btn");
 
 let tasks = JSON.parse(localStorage.getItem("todoTasks")) || [];
 
@@ -13,7 +14,6 @@ function saveTasks() {
 }
 
 function showStatus(message, type) {
-  
   taskStatus.textContent = message;
 
   taskStatus.classList.remove("success", "error");
@@ -186,8 +186,32 @@ function clearAllTasks() {
   showStatus("All tasks cleared.", "success");
 }
 
+function clearCompletedTasks() {
+  const completedTasks = tasks.filter(function (task) {
+    return task.isCompleted === true;
+  });
+
+  if (completedTasks.length === 0) {
+    showStatus("There are no completed tasks to clear.", "error");
+    return;
+  }
+
+  tasks = tasks.filter(function (task) {
+    return task.isCompleted === false;
+  });
+
+  saveTasks();
+  renderTasks();
+
+  showStatus("Completed tasks cleared.", "success");
+}
+
 addTaskBtn.addEventListener("click", function () {
   addTask();
+});
+
+clearCompletedBtn.addEventListener("click", function () {
+  clearCompletedTasks();
 });
 
 taskInput.addEventListener("keydown", function (event) {
