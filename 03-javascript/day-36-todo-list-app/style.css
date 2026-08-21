@@ -176,3 +176,13 @@ button:hover {
   gap: 8px;
   flex-wrap: wrap;
 }
+
+.edit-btn {
+  background-color: #7c3aed;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.edit-btn:hover {
+  background-color: #6d28d9;
+}

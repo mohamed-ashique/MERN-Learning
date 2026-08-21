@@ -1,4 +1,4 @@
-console.log("Day 38 - Delete Tasks and Clear All Tasks");
+console.log("Day 40 - Edit Tasks and Save to localStorage");
 
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task-btn");
@@ -6,9 +6,14 @@ const taskStatus = document.getElementById("task-status");
 const taskList = document.getElementById("task-list");
 const clearAllBtn = document.getElementById("clear-all-btn");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("todoTasks")) || [];
+
+function saveTasks() {
+  localStorage.setItem("todoTasks", JSON.stringify(tasks));
+}
 
 function showStatus(message, type) {
+  
   taskStatus.textContent = message;
 
   taskStatus.classList.remove("success", "error");
@@ -39,6 +44,10 @@ function renderTasks() {
             ${completeButtonText}
           </button>
 
+          <button class="edit-btn" data-id="${task.id}">
+            Edit
+          </button>
+
           <button class="delete-btn" data-id="${task.id}">
             Delete
           </button>
@@ -47,20 +56,20 @@ function renderTasks() {
     `;
   }
 
- if (tasks.length === 0) {
-  showStatus("Add your first task.", "");
-} else {
-  const completedTasks = tasks.filter(function (task) {
-    return task.isCompleted === true;
-  });
+  if (tasks.length === 0) {
+    showStatus("Add your first task.", "");
+  } else {
+    const completedTasks = tasks.filter(function (task) {
+      return task.isCompleted === true;
+    });
 
-  const pendingTasks = tasks.length - completedTasks.length;
+    const pendingTasks = tasks.length - completedTasks.length;
 
-  showStatus(
-    `Total: ${tasks.length} | Completed: ${completedTasks.length} | Pending: ${pendingTasks}`,
-    "success"
-  );
-}
+    showStatus(
+      `Total: ${tasks.length} | Completed: ${completedTasks.length} | Pending: ${pendingTasks}`,
+      "success",
+    );
+  }
 }
 
 function addTask() {
@@ -74,11 +83,12 @@ function addTask() {
   const newTask = {
     id: Date.now(),
     text: taskText,
-    isCompleted: false
+    isCompleted: false,
   };
 
   tasks.push(newTask);
 
+  saveTasks();
   renderTasks();
 
   taskInput.value = "";
@@ -90,9 +100,52 @@ function deleteTask(taskId) {
     return task.id !== taskId;
   });
 
+  saveTasks();
   renderTasks();
 
   showStatus("Task deleted successfully.", "success");
+}
+
+function editTask(taskId) {
+  const taskToEdit = tasks.find(function (task) {
+    return task.id === taskId;
+  });
+
+  if (!taskToEdit) {
+    showStatus("Task not found.", "error");
+    return;
+  }
+
+  const updatedText = prompt("Edit your task:", taskToEdit.text);
+
+  if (updatedText === null) {
+    showStatus("Edit cancelled.", "error");
+    return;
+  }
+
+  const cleanText = updatedText.trim();
+
+  if (cleanText === "") {
+    showStatus("Task text cannot be empty.", "error");
+    return;
+  }
+
+  tasks = tasks.map(function (task) {
+    if (task.id === taskId) {
+      return {
+        id: task.id,
+        text: cleanText,
+        isCompleted: task.isCompleted,
+      };
+    }
+
+    return task;
+  });
+
+  saveTasks();
+  renderTasks();
+
+  showStatus("Task updated successfully.", "success");
 }
 
 function toggleTaskComplete(taskId) {
@@ -101,13 +154,14 @@ function toggleTaskComplete(taskId) {
       return {
         id: task.id,
         text: task.text,
-        isCompleted: !task.isCompleted
+        isCompleted: !task.isCompleted,
       };
     }
 
     return task;
   });
 
+  saveTasks();
   renderTasks();
 }
 
@@ -126,6 +180,7 @@ function clearAllTasks() {
 
   tasks = [];
 
+  saveTasks();
   renderTasks();
 
   showStatus("All tasks cleared.", "success");
@@ -148,6 +203,12 @@ taskList.addEventListener("click", function (event) {
     deleteTask(taskId);
   }
 
+  if (event.target.classList.contains("edit-btn")) {
+    const taskId = Number(event.target.dataset.id);
+
+    editTask(taskId);
+  }
+
   if (
     event.target.classList.contains("complete-btn") ||
     event.target.classList.contains("undo-btn")
@@ -161,3 +222,5 @@ taskList.addEventListener("click", function (event) {
 clearAllBtn.addEventListener("click", function () {
   clearAllTasks();
 });
+
+renderTasks();
