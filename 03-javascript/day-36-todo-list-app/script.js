@@ -1,4 +1,4 @@
-console.log("Day 40 - Edit Tasks and Save to localStorage");
+console.log("Day 41 - Todo Filters, Search, and Final Cleanup");
 
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task-btn");
@@ -6,8 +6,12 @@ const taskStatus = document.getElementById("task-status");
 const taskList = document.getElementById("task-list");
 const clearAllBtn = document.getElementById("clear-all-btn");
 const clearCompletedBtn = document.getElementById("clear-completed-btn");
+const searchInput = document.getElementById("search-input");
+const filterButtons = document.querySelector(".filter-buttons");
 
 let tasks = JSON.parse(localStorage.getItem("todoTasks")) || [];
+let currentFilter = "all";
+let searchText = "";
 
 function saveTasks() {
   localStorage.setItem("todoTasks", JSON.stringify(tasks));
@@ -25,10 +29,66 @@ function showStatus(message, type) {
   }
 }
 
+function getFilteredTasks() {
+  
+  let filteredTasks = tasks;
+
+  if (currentFilter === "completed") {
+    filteredTasks = filteredTasks.filter(function (task) {
+      return task.isCompleted === true;
+    });
+  } else if (currentFilter === "pending") {
+    filteredTasks = filteredTasks.filter(function (task) {
+      return task.isCompleted === false;
+    });
+  }
+
+  if (searchText !== "") {
+    filteredTasks = filteredTasks.filter(function (task) {
+      return task.text.toLowerCase().includes(searchText);
+    });
+  }
+
+  return filteredTasks;
+}
+
+function updateTaskSummary() {
+
+  if (tasks.length === 0) {
+    showStatus("Add your first task.", "");
+    return;
+
+  }
+
+  const completedTasks = tasks.filter(function (task) {
+    return task.isCompleted === true;
+  });
+
+  const pendingTasks = tasks.length - completedTasks.length;
+
+  showStatus(
+    `Total: ${tasks.length} | Completed: ${completedTasks.length} | Pending: ${pendingTasks}`,
+    "success",
+  );
+}
+
 function renderTasks() {
   taskList.innerHTML = "";
 
-  for (const task of tasks) {
+  const filteredTasks = getFilteredTasks();
+
+  if (filteredTasks.length === 0) {
+    taskList.innerHTML = `
+      <li class="empty-message">
+        No tasks found.
+      </li>
+    `;
+
+    updateTaskSummary();
+    return;
+  }
+
+  for (const task of filteredTasks) {
     const completedClass = task.isCompleted ? "completed" : "";
     const completeButtonText = task.isCompleted ? "Undo" : "Complete";
     const completeButtonClass = task.isCompleted ? "undo-btn" : "complete-btn";
@@ -56,20 +116,7 @@ function renderTasks() {
     `;
   }
 
-  if (tasks.length === 0) {
-    showStatus("Add your first task.", "");
-  } else {
-    const completedTasks = tasks.filter(function (task) {
-      return task.isCompleted === true;
-    });
-
-    const pendingTasks = tasks.length - completedTasks.length;
-
-    showStatus(
-      `Total: ${tasks.length} | Completed: ${completedTasks.length} | Pending: ${pendingTasks}`,
-      "success",
-    );
-  }
+  updateTaskSummary();
 }
 
 function addTask() {
@@ -206,17 +253,38 @@ function clearCompletedTasks() {
   showStatus("Completed tasks cleared.", "success");
 }
 
+function updateActiveFilterButton(clickedButton) {
+  const filterBtnList = document.querySelectorAll(".filter-btn");
+
+  for (const button of filterBtnList) {
+    button.classList.remove("active-filter");
+  }
+
+  clickedButton.classList.add("active-filter");
+}
+
 addTaskBtn.addEventListener("click", function () {
   addTask();
-});
-
-clearCompletedBtn.addEventListener("click", function () {
-  clearCompletedTasks();
 });
 
 taskInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     addTask();
+  }
+});
+
+searchInput.addEventListener("input", function () {
+  searchText = searchInput.value.trim().toLowerCase();
+
+  renderTasks();
+});
+
+filterButtons.addEventListener("click", function (event) {
+  if (event.target.classList.contains("filter-btn")) {
+    currentFilter = event.target.dataset.filter;
+
+    updateActiveFilterButton(event.target);
+    renderTasks();
   }
 });
 
@@ -245,6 +313,10 @@ taskList.addEventListener("click", function (event) {
 
 clearAllBtn.addEventListener("click", function () {
   clearAllTasks();
+});
+
+clearCompletedBtn.addEventListener("click", function () {
+  clearCompletedTasks();
 });
 
 renderTasks();

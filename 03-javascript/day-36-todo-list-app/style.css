@@ -186,3 +186,56 @@ button:hover {
 .edit-btn:hover {
   background-color: #6d28d9;
 }
+
+.search-box {
+  margin-top: 20px;
+}
+
+.search-box input {
+  width: 100%;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  flex: 1;
+  background-color: #e2e8f0;
+  color: #1f2937;
+}
+
+.filter-btn:hover {
+  background-color: #cbd5e1;
+}
+
+.active-filter {
+  background-color: #2563eb;
+  color: white;
+}
+
+.active-filter:hover {
+  background-color: #1e40af;
+}
+
+.clear-completed-btn {
+  width: 100%;
+  margin-top: 12px;
+  background-color: #f59e0b;
+}
+
+.clear-completed-btn:hover {
+  background-color: #d97706;
+}
+
+.empty-message {
+  text-align: center;
+  color: #64748b;
+  background-color: #f8fafc;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e1;
+}

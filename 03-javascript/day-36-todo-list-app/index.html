@@ -23,12 +23,28 @@
 
         <p class="helper-text">Press Add Task after typing your task.</p>
 
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search tasks..." />
+        </div>
+
+        <div class="filter-buttons">
+          <button class="filter-btn active-filter" data-filter="all">
+            All
+          </button>
+          <button class="filter-btn" data-filter="pending">Pending</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
         <p id="task-status" class="task-status">Add your first task.</p>
 
         <ul id="task-list" class="task-list"></ul>
 
         <button id="clear-all-btn" class="clear-all-btn">
           Clear All Tasks
+        </button>
+
+        <button id="clear-completed-btn" class="clear-completed-btn">
+          Clear Completed Tasks
         </button>
         <button id="clear-completed-btn" class="clear-all-btn">
           Clear Completed Tasks
