@@ -30,10 +30,11 @@ function showStatus(message, type) {
 }
 
 function getFilteredTasks() {
-  
+
   let filteredTasks = tasks;
 
   if (currentFilter === "completed") {
+    
     filteredTasks = filteredTasks.filter(function (task) {
       return task.isCompleted === true;
     });
